@@ -15,22 +15,17 @@ interface AppState {
 export default class App extends React.Component<{}, AppState> {
   index: number = 1;
   words: string[] = [
+    // '1',
+    // '2',
+    // '3',
+    // '4',
+    // '5',
     'RE',
     'Origin',
     'Ultimate',
     'Pro',
     'Gold',
     'Ultra',
-    'White',
-    'Black',
-    'Free',
-    'X',
-    'Y',
-    'Z',
-    '>_<',
-    '#',
-    '0_0',
-    '',
     '^_^',
     '★',
     'α',
@@ -41,46 +36,24 @@ export default class App extends React.Component<{}, AppState> {
     '░',
     '( ͡° ͜ʖ ͡°)',
     '¯_(ツ)_/¯',
-    '2018',
-    '?!',
-    '!!',
-    '?!',
-    '2017',
-    '2016',
-    '2019',
-    '2020',
-    '2021',
-    '2022',
-    'I',
-    'II',
-    'III',
-    'IV',
-    'V',
-    'VI',
-    'VII',
-    'VIII',
-    'IX',
-    'X',
-    'DD',
-    'BB',
-    'CV',
-    'CA',
-    'SUB',
   ];
+  length: number = this.words.length;
+
 
   constructor(props: {}) {
     super(props);
 
     this.shuffleArray(this.words);
+
     this.state = {
       // Label 1
       fade1: new Animated.Value(1),
       top1: new Animated.Value(0),
-      text1: this.words[this.index - 1],
+      text1: this.words[0],
       // Label 2
       fade2: new Animated.Value(0),
       top2: new Animated.Value(20),
-      text2: this.words[this.index],
+      text2: this.words[1],
     };
   }
 
@@ -142,23 +115,27 @@ export default class App extends React.Component<{}, AppState> {
 
     final_animation.start(() => {
       // Reset and loop
-      const {fade1, fade2, top1, top2, text2} = this.state;
+      const {fade1, fade2, top1, top2, text1, text2} = this.state;
       fade1.setValue(1);
       fade2.setValue(0);
       top1.setValue(0);
       top2.setValue(20);
 
-      // Update index and text
-      if (this.index === this.words.length) {
-        this.index = 1;
+      // Update index
+      if (this.index + 1 >= this.words.length) {
+        this.index = 0;
+        this.setState({
+          text1: text2,
+          text2: this.words[0],
+        });
+      } else {
+        this.setState({
+          text1: text2,
+          text2: this.words[++this.index],
+        });
       }
 
-      this.setState({
-        text1: text2,
-        text2: this.words[this.index],
-      });
-
-      this.index++;
+      console.log(text1, text2, this.index);
     });
   };
 }
