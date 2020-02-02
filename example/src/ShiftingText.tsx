@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated, StyleProp } from 'react-native';
+import { StyleSheet, View, Animated, StyleProp } from 'react-native';
 
 interface ShiftingTextState {
   // label 1
@@ -124,29 +124,29 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
 
     shift_animation.start(() => {      
       // Clean up timeouts
-      // if (this.looper) clearTimeout(this.looper);
-      // this.looper = setTimeout(() => {
-      //   // Reset and loop
-      //   const { fade1, fade2, top1, top2, text2 } = this.state;
-      //   fade1.setValue(1);
-      //   fade2.setValue(0);
-      //   top1.setValue(0);
-      //   top2.setValue(20);
+      if (this.looper) clearTimeout(this.looper);
+      this.looper = setTimeout(() => {
+        // Reset and loop
+        const { fade1, fade2, top1, top2, text2 } = this.state;
+        fade1.setValue(1);
+        fade2.setValue(0);
+        top1.setValue(0);
+        top2.setValue(20);
 
-      //   // Update index
-      //   if (this.index + 1 >= this.length) {
-      //     this.index = 0;
-      //     this.setState({
-      //       text1: text2,
-      //       text2: this.words[0],
-      //     });
-      //   } else {
-      //     this.setState({
-      //       text1: text2,
-      //       text2: this.words[++this.index],
-      //     });
-      //   }
-      // }, this.frequency);
+        // Update index
+        if (this.index + 1 >= this.length) {
+          this.index = 0;
+          this.setState({
+            text1: text2,
+            text2: this.words[0],
+          });
+        } else {
+          this.setState({
+            text1: text2,
+            text2: this.words[++this.index],
+          });
+        }
+      }, this.frequency);
     });
   };
 }
