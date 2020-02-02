@@ -79,7 +79,7 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
     this.animate();
 
     const { prefix, titleStyle } = this.props;
-    const { center, t, root } = styles;
+    const { center, root, t } = styles;
     const { fade1, top1, text1, fade2, top2, text2 } = this.state;
 
     // Create style of text1 and text2
@@ -153,14 +153,15 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignSelf: 'center'
   },
   center: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    top: -12,
+    bottom: 12,
+    left: 4
   },
   t: {
     position: 'absolute',

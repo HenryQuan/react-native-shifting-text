@@ -7,7 +7,6 @@ export default class App extends React.Component {
     const { root, prefixStyle, title } = styles;
     return (
       <View style={root}>
-        <Text>Hello World </Text>
         <ShiftingText titles={['Ultimate', 'Pro', 'ULtra', 'Go', 'RE', 'XYZ', 'α', 'θ', 'Ω', '#']} 
           titleStyle={title}/>
       </View>
