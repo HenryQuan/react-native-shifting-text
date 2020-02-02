@@ -79,17 +79,17 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
     this.animate();
 
     const { prefix, titleStyle } = this.props;
-    const { center, root, t } = styles;
+    const { root, t } = styles;
     const { fade1, top1, text1, fade2, top2, text2 } = this.state;
 
     // Create style of text1 and text2
-    const t1Style = StyleSheet.flatten([t, { top: top1, opacity: fade1 }, titleStyle]);
+    const t1Style = StyleSheet.flatten([t, { position: 'absolute', top: top1, opacity: fade1 }, titleStyle]);
     const t2Style = StyleSheet.flatten([t, { top: top2, opacity: fade2 }, titleStyle]);
 
     return (
-      <View style={root}>
+      <View style={{flexDirection: 'row', alignContent: 'center', borderColor: 'black', borderWidth: 1}}>
         { prefix }
-        <View style={center}>
+        <View style={root}>
           <Animated.Text style={t1Style}>
             {text1}
           </Animated.Text>
@@ -124,29 +124,29 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
 
     shift_animation.start(() => {      
       // Clean up timeouts
-      if (this.looper) clearTimeout(this.looper);
-      this.looper = setTimeout(() => {
-        // Reset and loop
-        const { fade1, fade2, top1, top2, text2 } = this.state;
-        fade1.setValue(1);
-        fade2.setValue(0);
-        top1.setValue(0);
-        top2.setValue(20);
+      // if (this.looper) clearTimeout(this.looper);
+      // this.looper = setTimeout(() => {
+      //   // Reset and loop
+      //   const { fade1, fade2, top1, top2, text2 } = this.state;
+      //   fade1.setValue(1);
+      //   fade2.setValue(0);
+      //   top1.setValue(0);
+      //   top2.setValue(20);
 
-        // Update index
-        if (this.index + 1 >= this.length) {
-          this.index = 0;
-          this.setState({
-            text1: text2,
-            text2: this.words[0],
-          });
-        } else {
-          this.setState({
-            text1: text2,
-            text2: this.words[++this.index],
-          });
-        }
-      }, this.frequency);
+      //   // Update index
+      //   if (this.index + 1 >= this.length) {
+      //     this.index = 0;
+      //     this.setState({
+      //       text1: text2,
+      //       text2: this.words[0],
+      //     });
+      //   } else {
+      //     this.setState({
+      //       text1: text2,
+      //       text2: this.words[++this.index],
+      //     });
+      //   }
+      // }, this.frequency);
     });
   };
 }
@@ -156,16 +156,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    alignSelf: 'center'
-  },
-  center: {
-    top: -12,
-    bottom: 12,
-    left: 4
+    borderWidth: 1,
+    borderColor: 'blue',
   },
   t: {
-    position: 'absolute',
-    textAlign: 'center'
+    borderWidth: 1,
+    borderColor: 'red',
+    left: 4
   },
 });
 

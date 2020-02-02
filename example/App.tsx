@@ -7,8 +7,8 @@ export default class App extends React.Component {
     const { root, prefixStyle, title } = styles;
     return (
       <View style={root}>
-        <ShiftingText titles={['Ultimate', 'Pro', 'ULtra', 'Go', 'RE', 'XYZ', 'α', 'θ', 'Ω', '#']} 
-          titleStyle={title}/>
+        <ShiftingText titles={['Ultimate', 'Pro', 'ULtra']} 
+          titleStyle={title} prefix={<Text style={prefixStyle}>WoWs Info</Text>}/>
       </View>
     )
   }
