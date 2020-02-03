@@ -1,8 +1,7 @@
 <div align="center">
+<h1>react-native-shifting-text</h1>
 
 ![GIF sample for react-native-shifting-text](https://raw.githubusercontent.com/HenryQuan/react-native-shifting-text/master/sample.gif)
-
-<h1>react-native-shifting-text</h1>
 </div>
 
 ## Why?
