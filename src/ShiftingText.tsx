@@ -79,7 +79,7 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
     this.animate();
 
     const { prefix, titleStyle } = this.props;
-    const { root, t } = styles;
+    const { root, shifting, t } = styles;
     const { fade1, top1, text1, fade2, top2, text2 } = this.state;
 
     // Create style of text1 and text2
@@ -87,9 +87,9 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
     const t2Style = StyleSheet.flatten([t, { top: top2, opacity: fade2 }, titleStyle]);
 
     return (
-      <View style={{flexDirection: 'row', alignContent: 'center', borderColor: 'black', borderWidth: 1}}>
+      <View style={root}>
         { prefix }
-        <View style={root}>
+        <View style={shifting}>
           <Animated.Text style={t1Style}>
             {text1}
           </Animated.Text>
@@ -153,15 +153,15 @@ class ShiftingText extends React.Component<ShiftingTextProps, ShiftingTextState>
 
 const styles = StyleSheet.create({
   root: {
+    flexDirection: 'row', 
+    alignContent: 'center', 
+  },
+  shifting: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: 'blue',
   },
   t: {
-    borderWidth: 1,
-    borderColor: 'red',
     left: 4
   },
 });
