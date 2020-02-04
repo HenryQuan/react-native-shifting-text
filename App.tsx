@@ -7,7 +7,7 @@ export default class App extends React.Component {
     const { root, prefixStyle, title } = styles;
     return (
       <View style={root}>
-        <ShiftingText titles={['Ultimate', 'Pro', 'ULtra']} 
+        <ShiftingText titles={['Ultimate', 'Pro', 'Ultra', 'Go', 'Gold', 'RE']} 
           titleStyle={title} prefix={<Text style={prefixStyle}>WoWs Info</Text>}/>
       </View>
     )
@@ -18,16 +18,14 @@ const styles = StyleSheet.create({
   root: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
-    borderWidth: 1,
-    borderColor: 'black',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flex: 1
   },
   prefixStyle: {
-    fontSize: 24,
+    fontSize: 28,
+    fontWeight: 'bold'
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold'
+    fontSize: 28,
   }
 })
